@@ -35,7 +35,7 @@ public class Getobjectclass
 	    }
 	    //Find by css
 	    else if(objectType.equalsIgnoreCase("CSS")){
-	        
+	        System.out.println("test");
 	        return By.cssSelector(p.getProperty(objectname));
 	        
 	    }
