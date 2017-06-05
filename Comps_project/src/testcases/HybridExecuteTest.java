@@ -12,6 +12,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.firefox.internal.ProfilesIni;
+import org.testng.SkipException;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
@@ -27,8 +28,10 @@ public class HybridExecuteTest {
 	WebDriver webdriver;
 	
 @Test(dataProvider="hybridData")
-public void testlogin(String testcasename,String keyword, String objectname,String objectType,String value) throws Exception
+public void testlogin(String testcasename,String keyword, String objectname,String objectType,String value,String runmode) throws Exception
 {
+	if(runmode.equals("Y"))
+	{
 	if(testcasename!=null&&testcasename.length()!=0)
 	{
 		//System.setProperty("webdriver.chrome.driver", "C://Comps_workspace//Comps_project//Driver//driver path//chromedriver.exe");
@@ -42,7 +45,13 @@ public void testlogin(String testcasename,String keyword, String objectname,Stri
 		Properties allobjects=robject.getobjectrepository();
 		UIoperations Uoperation=new UIoperations(webdriver);
 		Uoperation.perform(allobjects, keyword, objectname, objectType, value);
+		}
+	else if(runmode.equals("N"))
+	{
+		throw new SkipException("Test case is skipped as Run mode is N");
 	}
+}
+	
 
 @DataProvider(name="hybridData")
 public Object[][] getDatafromDataprovider() throws IOException
@@ -51,23 +60,24 @@ public Object[][] getDatafromDataprovider() throws IOException
 	POIexcel file=new POIexcel();
 	XSSFSheet sheet=file.readexcel("C://Comps_workspace//Comps_project//test-output", "TestCase.xlsx", "Comps");
 	int rowcount=sheet.getLastRowNum()-sheet.getFirstRowNum();
-	System.out.println("row count is" +rowcount);
-	object=new Object[rowcount][5];
+	System.out.println("row count is " +rowcount);
+	int col_count=sheet.getRow(1).getPhysicalNumberOfCells();
+	object=new Object[rowcount][col_count];
 	for(int i=0;i<rowcount;i++)
 	{
 		XSSFRow row=sheet.getRow(i+1);
 		 for (int j = 0; j < row.getLastCellNum(); j++) {
 	            //Print excel data in console
 				XSSFCell cell=row.getCell(j);
-	            object[i][j] = cell.toString();	
-	           // System.out.println("values are" +object[i][j]);
+	            object[i][j] = cell.toString();
+	           System.out.println("values are" +object[i][j]);
 	        }
 	    }
 	    System.out.println("");
 	     return object;    
 	    }
 
-@AfterMethod
+//@AfterMethod
 public void teardown()
 {
 	webdriver.close();
