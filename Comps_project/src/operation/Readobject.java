@@ -6,14 +6,22 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
-public class Readobject {
+public class Readobject 
+{
 	Properties p=new Properties();
+	
 public Properties getobjectrepository() throws IOException
 {
-	File src=new File("C:\\Comps_workspace\\Comps_project\\src\\objects\\object.properties");
+
+// original path by sweta
+//	File src=new File("C:\\Comps_workspace\\Comps_project\\src\\objects\\object.properties");
+
+	File src=new File("./src/objects/object.properties");
+	
 	FileInputStream fs=new FileInputStream(src);
 	p.load(fs);
 	p.setProperty("managecomps", "MANAGE COMPS");
+	System.out.println("new branch test ");
 	return p;
 	}
 }
