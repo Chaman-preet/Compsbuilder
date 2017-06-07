@@ -38,7 +38,7 @@ case "EXPLICITWAIT":
 case "DRIVERWAIT":
 int i=Integer.parseInt(value);
 	Thread.sleep(i);
-	System.out.println("wait is" +i);
+	System.out.println("wait is " +i);
 //	Thread.sleep(2000);
 	break;
 case "CLOSE":
