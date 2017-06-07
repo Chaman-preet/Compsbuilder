@@ -22,6 +22,7 @@ public Properties getobjectrepository() throws IOException
 	p.load(fs);
 	p.setProperty("managecomps", "MANAGE COMPS");
 	System.out.println("new branch test ");
+	System.out.println("new branch test 1");
 	return p;
 	}
 }
