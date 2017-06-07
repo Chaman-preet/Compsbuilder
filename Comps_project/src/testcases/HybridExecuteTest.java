@@ -23,23 +23,32 @@ import operation.UIoperations;
 import operation.Readobject;
 import exportExcel.POIexcel;
 
+
 public class HybridExecuteTest {
 	WebDriver webdriver;
 	
 @Test(dataProvider="hybridData")
 public void testlogin(String testcasename,String keyword, String objectname,String objectType,String value) throws Exception
 {
-	if(testcasename!=null&&testcasename.length()!=0)
+	if(testcasename!=null&&testcasename.length()!=0&&keyword!=null) // &&keyword.length()!=0
 	{
 		//System.setProperty("webdriver.chrome.driver", "C://Comps_workspace//Comps_project//Driver//driver path//chromedriver.exe");
 		//webdriver=new ChromeDriver();
+		
 		FirefoxProfile fp = new FirefoxProfile();
 		fp.setPreference("network.proxy.type", ProxyType.AUTODETECT.ordinal());
-		System.setProperty("webdriver.gecko.driver", "C://Users//chaman.preet//Downloads//geckodriver.exe");
+		
+		//System.setProperty("webdriver.gecko.driver","C:\\Users\\rajeev.singh2\\Downloads\\softwares\\geckodriver\\geckodriver.exe");
+		
+		System.setProperty("webdriver.gecko.driver","./src/objects/geckodriver.exe");
 		webdriver=new FirefoxDriver(fp);
+		webdriver.manage().window().maximize();
+		
+
 	}
 		Readobject robject=new Readobject();
 		Properties allobjects=robject.getobjectrepository();
+		
 		UIoperations Uoperation=new UIoperations(webdriver);
 		Uoperation.perform(allobjects, keyword, objectname, objectType, value);
 	}
@@ -49,7 +58,12 @@ public Object[][] getDatafromDataprovider() throws IOException
 {
 	Object[][] object=null;
 	POIexcel file=new POIexcel();
-	XSSFSheet sheet=file.readexcel("C://Comps_workspace//Comps_project//test-output", "TestCase.xlsx", "Comps");
+
+	// original path by Sweta
+	// XSSFSheet sheet=file.readexcel("C://Comps_workspace//Comps_project//test-output", "TestCase.xlsx", "Comps");
+	
+	XSSFSheet sheet=file.readexcel("C://Users//rajeev.singh2//git//Compsbuilder//Comps_project", "TestCase.xlsx", "Comps");
+
 	int rowcount=sheet.getLastRowNum()-sheet.getFirstRowNum();
 	System.out.println("row count is" +rowcount);
 	object=new Object[rowcount][5];
@@ -67,9 +81,12 @@ public Object[][] getDatafromDataprovider() throws IOException
 	     return object;    
 	    }
 
-@AfterMethod
+@AfterTest
 public void teardown()
 {
-	webdriver.close();
+	
+	//webdriver.close();
+	webdriver.quit();
+	
 }
 	}

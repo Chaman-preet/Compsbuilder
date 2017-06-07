@@ -21,8 +21,8 @@ public Properties getobjectrepository() throws IOException
 	FileInputStream fs=new FileInputStream(src);
 	p.load(fs);
 	p.setProperty("managecomps", "MANAGE COMPS");
-	System.out.println("new branch test ");
-	System.out.println("new branch test 1");
+	//p.setProperty("menu_TradingComps", "html/body/div[1]/div[2]/div[1]/ul/li[1]/a");
+	//System.out.println(p.getProperty("menu_TradingComps"));
 	return p;
 	}
 }
