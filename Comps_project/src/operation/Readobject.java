@@ -14,6 +14,12 @@ public Properties getobjectrepository() throws IOException
 	FileInputStream fs=new FileInputStream(src);
 	p.load(fs);
 	p.setProperty("managecomps", "MANAGE COMPS");
+	p.setProperty("Team_arrow", "//span[@aria-owns='drp_Team_listbox']");
+	p.setProperty("Team_select", "//div[@class='k-list-scroller']//ul[@id='drp_Team_listbox']//li[@data-offset-index='0']");
+	p.setProperty("Template_arrow", "//span[@aria-owns='drp_Template_listbox']");
+	p.setProperty("Template_select","//div[@class='k-list-scroller']//ul[@id='drp_Template_listbox']//li[text()='NY']");
+	p.setProperty("UploadcompsTab", "Upload Comps");
+	p.setProperty("upload", "attachment");
 	return p;
 	}
 }
