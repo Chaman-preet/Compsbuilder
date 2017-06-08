@@ -73,7 +73,8 @@ public Object[][] getDatafromDataprovider() throws IOException
 {
 	Object[][] object=null;
 	POIexcel file=new POIexcel();
-	XSSFSheet sheet=file.readexcel("C://Comps_workspace//Comps_project//src", "TestCase.xlsx", "Comps");
+	XSSFSheet sheet=file.readexcel("C://Comps_workspace//Comps_project//src", "TestCase.xlsx", "Test cases");
+	XSSFSheet sheet1=file.readexcel("C://Comps_workspace//Comps_project//src", "TestCase.xlsx", "Test steps");
 	int rowcount=sheet.getLastRowNum()-sheet.getFirstRowNum();
 	System.out.println("row count is " +rowcount);
 	int col_count=sheet.getRow(1).getPhysicalNumberOfCells();
