@@ -20,6 +20,11 @@ public Properties getobjectrepository() throws IOException
 	p.setProperty("Template_select","//div[@class='k-list-scroller']//ul[@id='drp_Template_listbox']//li[text()='NY']");
 	p.setProperty("UploadcompsTab", "Upload Comps");
 	p.setProperty("upload", "attachment");
+	p.setProperty("Sector_select", "//div[@class='k-list-scroller']//ul[@id='drp_Sector_listbox']/li[@data-offset-index='0']");
+	p.setProperty("Subsector_arrow", "(//div[@class='k-multiselect-wrap k-floatwrap'])[1]");
+	p.setProperty("Subsector_select", "//div[@class='k-list-scroller']//ul[@id='MulSel_SubSector_listbox']//li[@data-offset-index='0']");
+	p.setProperty("Portfolio_arrow", "(//div[@class='k-multiselect-wrap k-floatwrap'])[2]");
+	p.setProperty("Portfolio_Select", "//div[@class='k-list-scroller']//ul[@id='MulSel_Portfolio_listbox']//li[text()='Apparel Manufacturers']");
 	return p;
 	}
 }

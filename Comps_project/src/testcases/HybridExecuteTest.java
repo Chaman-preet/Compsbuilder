@@ -50,6 +50,7 @@ public void testlogin(String testcasename,String keyword, String objectname,Stri
 		fp.setPreference("network.proxy.type", ProxyType.AUTODETECT.ordinal());
 		System.setProperty("webdriver.gecko.driver", "C://Users//chaman.preet//Downloads//geckodriver.exe");
 		webdriver=new FirefoxDriver(fp);
+		webdriver.manage().window().maximize();
 	}
 		Readobject robject=new Readobject();
 		Properties allobjects=robject.getobjectrepository();
