@@ -58,8 +58,8 @@ public void testlogin(String testcasename,String keyword, String objectname,Stri
 		Uoperation.perform(allobjects, keyword, objectname, objectType, value);
 		Download_comps objdowm=new Download_comps(webdriver);
 		objdowm.download(allobjects, keyword, objectname, objectType, value);
-		UploadComps objupload=new UploadComps(webdriver);
-		objupload.upload(allobjects, keyword, objectname, objectType, value);
+		//UploadComps objupload=new UploadComps(webdriver);
+		//objupload.upload(allobjects, keyword, objectname, objectType, value);
 		}
 	else if(runmode.equals("N"))
 	{
