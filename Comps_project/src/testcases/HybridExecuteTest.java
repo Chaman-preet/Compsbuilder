@@ -65,7 +65,8 @@ public Object[][] getDatafromDataprovider() throws IOException
 	XSSFSheet sheet=file.readexcel("C://Users//rajeev.singh2//git//Compsbuilder//Comps_project", "TestCase.xlsx", "Comps");
 
 	int rowcount=sheet.getLastRowNum()-sheet.getFirstRowNum();
-	System.out.println("row count is" +rowcount);
+	System.out.println("row count is: " +rowcount);
+	System.out.println("total test case count in excel sheet: "+ rowcount);
 	object=new Object[rowcount][5];
 	for(int i=0;i<rowcount;i++)
 	{

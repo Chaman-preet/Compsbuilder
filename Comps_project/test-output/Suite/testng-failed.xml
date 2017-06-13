@@ -5,7 +5,7 @@
     <classes>
       <class name="testcases.HybridExecuteTest">
         <methods>
-          <include name="testlogin" invocation-numbers="12"/>
+          <include name="testlogin" invocation-numbers="11 14 16 19 21 22 23 24 25 26"/>
           <include name="teardown"/>
         </methods>
       </class> <!-- testcases.HybridExecuteTest -->

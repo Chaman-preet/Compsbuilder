@@ -1,10 +1,16 @@
 package operation;
 
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class UIoperations extends Getobjectclass {
 WebDriver driver;
@@ -34,62 +40,38 @@ case "CLOSE":
 	break;
 	
 case "WAIT":
-	//long i=Integer.parseInt(value);
-	//Thread.sleep(i);
-	Thread.sleep(3000);
-	//driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+	try{
+	long time =(long)Double.parseDouble(value);
+    Thread.sleep(time*1000L);}
+    catch (NumberFormatException e){
+    System.out.println("not a number"); } 
 	break;
+	
+	//Thread.sleep(5000);
+	//driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+	
+case "ROBOTwithKEYDOWN":
+	
+	Robot rob= new Robot();
+	rob.keyPress(KeyEvent.VK_DOWN);
+	rob.keyRelease(KeyEvent.VK_DOWN);
+	break;
+	
+case "ROTBOTwithENTER":
+Robot rob1= new Robot();
+rob1.keyPress(KeyEvent.VK_ENTER);
+rob1.keyRelease(KeyEvent.VK_ENTER);
+
+break;
+case "SELECTFROMDROPDOWN":
+	WebElement element1=driver.findElement(this.getObject(p, objectname, objectType));
+	Select se=new Select(element1);
+	se.selectByValue(value);
+	break;
+	
 	default:
 		break;
 }
 	}
 
-//private By getObject(Properties p,String objectname,String objectType) throws Exception{
-//    //Find by xpath
-//    if(objectType.equalsIgnoreCase("XPATH")){
-//        
-//        return By.xpath(p.getProperty(objectname));
-//    }
-//    //find by class
-//    else if(objectType.equalsIgnoreCase("CLASSNAME")){
-//        
-//        return By.className(p.getProperty(objectname));
-//        
-//    }
-//    
-//  //find by id
-//    else if(objectType.equalsIgnoreCase("ID")){
-//        
-//        return By.id(p.getProperty(objectname));
-//        
-//    }
-//    //find by name
-//    else if(objectType.equalsIgnoreCase("NAME")){
-//        
-//        return By.name(p.getProperty(objectname));
-//        
-//    }
-//    //Find by css
-//    else if(objectType.equalsIgnoreCase("CSS")){
-//        
-//        return By.cssSelector(p.getProperty(objectname));
-//        
-//    }
-//    //find by link
-//    else if(objectType.equalsIgnoreCase("LINK")){
-//        
-//        return By.linkText(p.getProperty(objectname));
-//        
-//    }
-//    //find by partial link
-//    else if(objectType.equalsIgnoreCase("PARTIALLINK")){
-//        
-//        return By.partialLinkText(p.getProperty(objectname));
-//        
-//    }
-//    else
-//    {
-//        throw new Exception("Wrong object type");
-//    }
-//}
 }
